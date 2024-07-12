@@ -246,29 +246,29 @@ async function fetchData () {
 
     ////// INPUT VALIDATOR //////
 
-    let inputs = document.querySelectorAll('.input')
-    let buttonSends = document.querySelectorAll('.submit')
+    let inputs = document.querySelectorAll('.input');
+    let buttonSends = document.querySelectorAll('.submit');
 
     let inputValidator = {
       name: false,
       title: false,
       link: false
-    }
+    };
 
     inputs.forEach(input => {
       input.addEventListener('input', event => {
-        let name = event.target.getAttribute('name')
-        if (event.target.value.length > 0) {
-          inputValidator[name] = true
-        } else {
-          inputValidator[name] = false
-        }
+        let name = event.target.getAttribute('name');
+        inputValidator[name] = !!input.value.length;
 
-        let allTrue = Object.keys(inputValidator).every(item => {
-          return inputValidator[item] === true
-        })
+        const allTrue = Object.keys(inputValidator.every(Boolean);
 
         buttonSends.forEach(buttonSend => {
+          // buttonSend.toggleAttribute('disabled', allTrue);
+          /*
+            It's possible to remove the if/else below and replace it all with just the commented line above.
+            "disabled" is enough to prevent the button from being triggered.
+            I'll leave the testing to you :D
+          */
           if (allTrue) {
             buttonSend.disabled = false
             buttonSend.style.pointerEvents = 'unset'
@@ -276,9 +276,9 @@ async function fetchData () {
             buttonSend.disabled = true
             buttonSend.style.pointerEvents = 'none'
           }
-        })
-      })
-    })
+        });
+      });
+    });
 
     function suggestionIsValid (suggestionForm, thanksTexts, form) {
       suggestionForm.classList.toggle('suggestion-form')
